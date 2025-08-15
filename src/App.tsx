@@ -271,7 +271,13 @@ function App() {
                 with compassionate care to ensure every patient receives the best possible treatment 
                 in a comfortable, stress-free environment.
               </p>
-              
+              <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+								Our expertise includes advanced treatments in periodontology, implantology, cosmetic dentistry, 
+								and restorative care, all tailored to provide you with a healthy, beautiful smile. 
+								At Dr. Ajila's Speciality Dental Care, we're committed to delivering outstanding results, 
+								ensuring patient satisfaction, and promoting optimal oral health. 
+								Book your appointment today and experience the best in dental care!"
+								 </p>
               <div className="space-y-4 mb-8">
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="w-6 h-6 text-teal-600 flex-shrink-0 mt-1" />
@@ -325,8 +331,9 @@ function App() {
                 <Phone className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-bold text-slate-800 mb-4">Call Us</h3>
-              <p className="text-2xl font-bold text-teal-600 mb-2">(555) 123-DENT</p>
-              <p className="text-slate-600">Available Mon-Sat, 9 AM - 6 PM</p>
+              <p className="text-2xl font-bold text-teal-600 mb-2">+91 9482474286</p>
+              <p className="text-2xl font-bold text-teal-600 mb-2">08258 234286</p>
+              <p className="text-slate-600">Available Mon-Sat, 10 AM - 1 PM & 3:30 PM - 7 PM</p>
             </div>
 
             <div className="bg-gradient-to-br from-teal-50 to-blue-50 rounded-2xl p-8 text-center">
@@ -334,7 +341,7 @@ function App() {
                 <Mail className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-bold text-slate-800 mb-4">Email Us</h3>
-              <p className="text-lg font-semibold text-teal-600 mb-2">info@drajila.com</p>
+              <p className="text-lg font-semibold text-teal-600 mb-2">drajila25@gmail.com</p>
               <p className="text-slate-600">We'll respond within 24 hours</p>
             </div>
 
@@ -344,30 +351,9 @@ function App() {
               </div>
               <h3 className="text-xl font-bold text-slate-800 mb-4">Visit Us</h3>
               <p className="text-lg font-semibold text-slate-800 mb-2">
-                123 Dental Avenue<br />
-                Suite 100, Medical City<br />
-                State 12345
+                1st floor, Prime Mall,<br />
+                Jodurasthe, Karkala. 576117
               </p>
-            </div>
-          </div>
-
-          {/* Operating Hours */}
-          <div className="bg-slate-50 rounded-2xl p-8 mb-12">
-            <div className="flex items-center justify-center mb-6">
-              <Clock className="w-8 h-8 text-teal-600 mr-3" />
-              <h3 className="text-2xl font-bold text-slate-800">Operating Hours</h3>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-              <div className="text-center">
-                <h4 className="font-semibold text-slate-800 mb-2">Weekdays</h4>
-                <p className="text-slate-600">Monday - Friday: 9:00 AM - 6:00 PM</p>
-              </div>
-              <div className="text-center">
-                <h4 className="font-semibold text-slate-800 mb-2">Weekend</h4>
-                <p className="text-slate-600">Saturday: 9:00 AM - 4:00 PM</p>
-                <p className="text-slate-600">Sunday: Closed</p>
-              </div>
             </div>
           </div>
 
@@ -395,10 +381,10 @@ function App() {
               gentle treatment, and personalized attention for every patient.
             </p>
             <div className="flex justify-center space-x-6">
-              <a href="tel:555-123-3368" className="text-slate-300 hover:text-teal-400 transition-colors">
+              <a href="tel:+919482474286" className="text-slate-300 hover:text-teal-400 transition-colors">
                 <Phone className="w-6 h-6" />
               </a>
-              <a href="mailto:info@drajila.com" className="text-slate-300 hover:text-teal-400 transition-colors">
+              <a href="mailto:drajila25@gmail.com" className="text-slate-300 hover:text-teal-400 transition-colors">
                 <Mail className="w-6 h-6" />
               </a>
               <a href="#" className="text-slate-300 hover:text-teal-400 transition-colors">
