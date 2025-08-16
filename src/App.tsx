@@ -11,12 +11,18 @@ import {
   Award,
   CheckCircle,
   Star,
-  Users
+  Users,
+  MessageCircle // Import MessageCircle for the chat button
 } from 'lucide-react';
+import Modal from './components/Modal'; // Import the new Modal component
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false); // State for modal
+
+  const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeqq_brok8DVSqBzZf7DYtK2L6Q_wNwjH4BlDQy69KOUPdirQ/viewform?usp=dialog";
+  const whatsappNumber = "+919900876136"; // Dr. Ajila's WhatsApp number
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +31,21 @@ function App() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleBookAppointmentClick = () => {
+    window.open(googleFormUrl, '_blank');
+  };
+
+  const handleLearnMoreClick = () => {
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleChatWithUsClick = () => {
+    window.open(`https://wa.me/${whatsappNumber}`, '_blank');
+  };
 
   const services = [
     {
@@ -101,7 +122,10 @@ function App() {
                 <a href="#contact" className="text-slate-700 hover:text-teal-600 px-3 py-2 text-sm font-medium transition-colors">
                   Contact
                 </a>
-                <button className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                <button 
+                  onClick={handleBookAppointmentClick}
+                  className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                >
                   Book Appointment
                 </button>
               </div>
@@ -134,7 +158,10 @@ function App() {
                 <a href="#contact" className="block text-slate-700 hover:text-teal-600 py-2 text-base font-medium">
                   Contact
                 </a>
-                <button className="w-full bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-full text-base font-medium transition-colors shadow-lg">
+                <button 
+                  onClick={handleBookAppointmentClick}
+                  className="w-full bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-full text-base font-medium transition-colors shadow-lg"
+                >
                   Book Appointment
                 </button>
               </div>
@@ -164,10 +191,16 @@ function App() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-                <button className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                <button 
+                  onClick={handleBookAppointmentClick}
+                  className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                >
                   Book an Appointment
                 </button>
-                <button className="border-2 border-slate-300 hover:border-teal-600 text-slate-700 hover:text-teal-600 px-8 py-4 rounded-full text-lg font-semibold transition-all">
+                <button 
+                  onClick={handleLearnMoreClick}
+                  className="border-2 border-slate-300 hover:border-teal-600 text-slate-700 hover:text-teal-600 px-8 py-4 rounded-full text-lg font-semibold transition-all"
+                >
                   Learn More
                 </button>
               </div>
@@ -304,7 +337,10 @@ function App() {
                 </div>
               </div>
               
-              <button className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+              <button 
+                onClick={() => setIsModalOpen(true)} // Open modal on click
+                className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              >
                 Meet Dr. Ajila
               </button>
             </div>
@@ -359,7 +395,10 @@ function App() {
 
           {/* Final CTA */}
           <div className="text-center">
-            <button className="bg-teal-600 hover:bg-teal-700 text-white px-12 py-5 rounded-full text-xl font-bold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+            <button 
+              onClick={handleBookAppointmentClick}
+              className="bg-teal-600 hover:bg-teal-700 text-white px-12 py-5 rounded-full text-xl font-bold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            >
               Schedule Your Appointment Today
             </button>
             <p className="text-slate-600 mt-4">
@@ -399,6 +438,57 @@ function App() {
           </div>
         </div>
       </footer>
+
+      {/* Dr. Ajila's Profile Modal */}
+      <Modal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        title="Meet Dr. Ajila"
+      >
+        <div className="flex flex-col lg:flex-row gap-8 items-center lg:items-start">
+          <div className="flex-shrink-0">
+            <img 
+              src="https://images.pexels.com/photos/6812521/pexels-photo-6812521.jpeg?auto=compress&cs=tinysrgb&w=800" 
+              alt="Dr. Ajila"
+              className="w-48 h-48 rounded-full object-cover shadow-lg border-4 border-teal-100"
+            />
+          </div>
+          <div>
+            <p className="text-lg text-slate-700 mb-4">
+              Dr. Ajila is a highly experienced and compassionate dental professional with over 15 years of dedicated practice in the field of dentistry. 
+              He holds a Bachelor of Dental Surgery (BDS) and a Master of Dental Surgery (MDS) in Periodontology, specializing in the health of gums and supporting structures of teeth.
+            </p>
+            <p className="text-lg text-slate-700 mb-4">
+              His expertise extends to advanced treatments in periodontology, implantology, cosmetic dentistry, and restorative care. 
+              Dr. Ajila is committed to staying at the forefront of dental innovation, regularly attending workshops and seminars to incorporate the latest techniques and technologies into his practice.
+            </p>
+            <p className="text-lg text-slate-700 mb-4">
+              Patients appreciate Dr. Ajila's gentle approach, meticulous attention to detail, and his ability to create a comfortable and reassuring environment. 
+              He believes in a patient-centered philosophy, ensuring that each treatment plan is tailored to the individual needs and goals of his patients, promoting not just oral health but overall well-being.
+            </p>
+            <p className="text-lg text-slate-700">
+              Outside of his practice, Dr. Ajila is passionate about dental education and community outreach, striving to raise awareness about oral hygiene and preventive care.
+            </p>
+          </div>
+        </div>
+        <div className="mt-8 pt-6 border-t border-gray-100 flex justify-center">
+          <button 
+            onClick={handleBookAppointmentClick}
+            className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+          >
+            Book Appointment
+          </button>
+        </div>
+      </Modal>
+
+      {/* Floating Chat Button */}
+      <button
+        onClick={handleChatWithUsClick}
+        className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-xl flex items-center space-x-3 transition-all duration-300 transform hover:-translate-y-1 z-50"
+      >
+        <MessageCircle className="w-6 h-6" />
+        <span>Chat with Us!</span>
+      </button>
     </div>
   );
 }
