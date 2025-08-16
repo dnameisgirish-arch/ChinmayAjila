@@ -19,7 +19,8 @@ import Modal from './components/Modal'; // Import the new Modal component
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false); // State for modal
+  const [isModalOpen, setIsModalOpen] = useState(false); // State for Dr. Ajila's profile modal
+  const [isServicesModalOpen, setIsServicesModalOpen] = useState(false); // State for services modal
 
   const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeqq_brok8DVSqBzZf7DYtK2L6Q_wNwjH4BlDQy69KOUPdirQ/viewform?usp=dialog";
   const whatsappNumber = "+919900876136"; // Dr. Ajila's WhatsApp number
@@ -123,12 +124,9 @@ function App() {
                 <a href="#contact" className="text-slate-700 hover:text-teal-600 px-3 py-2 text-sm font-medium transition-colors">
                   Contact
                 </a>
-                <button 
-                  onClick={handleBookAppointmentClick}
-                  className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-                >
-                  Book Appointment
-                </button>
+                <a href="#" className="text-slate-700 hover:text-teal-600 px-3 py-2 text-sm font-medium transition-colors">
+                  Blogs
+                </a>
               </div>
             </div>
 
@@ -275,7 +273,10 @@ function App() {
           </div>
 
           <div className="text-center mt-12">
-            <button className="bg-slate-100 hover:bg-teal-600 text-slate-700 hover:text-white px-8 py-4 rounded-full text-lg font-semibold transition-all border-2 border-transparent hover:border-teal-600">
+            <button 
+              onClick={() => setIsServicesModalOpen(true)} // Open services modal on click
+              className="bg-slate-100 hover:bg-teal-600 text-slate-700 hover:text-white px-8 py-4 rounded-full text-lg font-semibold transition-all border-2 border-transparent hover:border-teal-600"
+            >
               View All Services
             </button>
           </div>
@@ -478,6 +479,45 @@ function App() {
             className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             Book Appointment
+          </button>
+        </div>
+      </Modal>
+
+      {/* All Services Modal */}
+      <Modal
+        isOpen={isServicesModalOpen}
+        onClose={() => setIsServicesModalOpen(false)}
+        title="Our Full Range of Services"
+      >
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => {
+            const IconComponent = service.icon;
+            return (
+              <div 
+                key={index}
+                className="group bg-white border border-gray-100 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              >
+                <div className="bg-teal-100 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:bg-teal-600 transition-colors">
+                  <IconComponent className="w-8 h-8 text-teal-600 group-hover:text-white transition-colors" />
+                </div>
+                
+                <h3 className="text-xl font-bold text-slate-800 mb-4">
+                  {service.title}
+                </h3>
+                
+                <p className="text-slate-600 leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+        <div className="mt-8 pt-6 border-t border-gray-100 flex justify-center">
+          <button 
+            onClick={handleBookAppointmentClick}
+            className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+          >
+            Book an Appointment
           </button>
         </div>
       </Modal>
