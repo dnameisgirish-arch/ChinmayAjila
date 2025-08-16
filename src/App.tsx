@@ -23,6 +23,7 @@ function App() {
 
   const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeqq_brok8DVSqBzZf7DYtK2L6Q_wNwjH4BlDQy69KOUPdirQ/viewform?usp=dialog";
   const whatsappNumber = "+919900876136"; // Dr. Ajila's WhatsApp number
+  const googleMapsUrl = "https://maps.app.goo.gl/Pz8wEuXDUounegzT9";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -426,7 +427,7 @@ function App() {
               <a href="mailto:drajila25@gmail.com" className="text-slate-300 hover:text-teal-400 transition-colors">
                 <Mail className="w-6 h-6" />
               </a>
-              <a href="#" className="text-slate-300 hover:text-teal-400 transition-colors">
+              <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-teal-400 transition-colors">
                 <MapPin className="w-6 h-6" />
               </a>
             </div>
