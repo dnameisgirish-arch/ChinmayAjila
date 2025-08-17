@@ -40,8 +40,8 @@ function HomePage() {
   const kenburnsClasses = ['animate-kenburns-1', 'animate-kenburns-2', 'animate-kenburns-3', 'animate-kenburns-4', 'animate-kenburns-5'];
 
   const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeqq_brok8DVSqBzZf7DYtK2L6Q_wNwjH4BlDQy69KOUPdirQ/viewform?usp=dialog";
-  const whatsappNumber = "+919900876136"; // Dr. Ajila's WhatsApp number
-  const googleMapsUrl = "https://maps.app.goo.gl/Pz8wEuXDUounegzT9";
+  const whatsappNumber = "+919482474286"; // Dr. Ajila's WhatsApp number
+  const googleMapsUrl = "https://maps.app.goo.gl/Pz8wEuXDUounegzT9"; //Google Maps location
 
   useEffect(() => {
     const handleScroll = () => {
@@ -527,7 +527,7 @@ function HomePage() {
         <div className="flex flex-col lg:flex-row gap-8 items-center lg:items-start">
           <div className="flex-shrink-0">
             <img 
-              src="https://images.pexels.com/photos/6812521/pexels-photo-6812521.jpeg?auto=compress&cs=tinysrgb&w=800" 
+              src="https://images.pexels.com/photos/33486875/pexels-photo-33486875.jpeg" 
               alt="Dr. Ajila"
               className="w-48 h-48 rounded-full object-cover shadow-lg border-4 border-teal-100"
             />
