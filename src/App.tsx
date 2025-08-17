@@ -27,11 +27,14 @@ function HomePage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const heroImages = [
-    "https://images.pexels.com/photos/7771733/pexels-photo-7771733.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    "https://images.pexels.com/photos/6528893/pexels-photo-6528893.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    "https://images.pexels.com/photos/6693243/pexels-photo-6693243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    "https://images.pexels.com/photos/8942041/pexels-photo-8942041.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    "https://images.pexels.com/photos/7615459/pexels-photo-7615459.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    "https://images.pexels.com/photos/287237/pexels-photo-287237.jpeg",
+    "https://images.pexels.com/photos/305568/pexels-photo-305568.jpeg",
+    "https://images.pexels.com/photos/305566/pexels-photo-305566.jpeg",
+    "https://images.pexels.com/photos/305564/pexels-photo-305564.jpeg",
+    "https://images.pexels.com/photos/6529110/pexels-photo-6529110.jpeg",
+		"https://images.pexels.com/photos/4687905/pexels-photo-4687905.jpeg",
+    "https://images.pexels.com/photos/6529216/pexels-photo-6529216.jpeg",
+		"https://images.pexels.com/photos/4269361/pexels-photo-4269361.jpeg"
   ];
 
   const kenburnsClasses = ['animate-kenburns-1', 'animate-kenburns-2', 'animate-kenburns-3', 'animate-kenburns-4', 'animate-kenburns-5'];
@@ -140,8 +143,8 @@ function HomePage() {
   ];
 
   const trustIndicators = [
-    { label: "Years of Excellence", value: "15+" },
-    { label: "Happy Patients", value: "5,000+" },
+    { label: "Years of Excellence", value: "5+" },
+    { label: "Happy Patients", value: "1,200+" },
     { label: "Success Rate", value: "99%" },
     { label: "Advanced Technology", value: "Latest" }
   ];
@@ -236,7 +239,7 @@ function HomePage() {
             <div className="text-center lg:text-left">
               <div className="inline-flex items-center bg-teal-100 text-teal-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
                 <Award className="w-4 h-4 mr-2" />
-                15+ Years of Excellence
+                5+ Years of Excellence
               </div>
               
               <h1 className="text-4xl lg:text-6xl font-bold text-slate-800 mb-6 leading-tight">
@@ -400,7 +403,7 @@ function HomePage() {
                   <CheckCircle className="w-6 h-6 text-teal-600 flex-shrink-0 mt-1" />
                   <div>
                     <h4 className="font-semibold text-slate-800">Experienced Team</h4>
-                    <p className="text-slate-600">15+ years of expertise in comprehensive dental care</p>
+                    <p className="text-slate-600">5+ years of expertise in comprehensive dental care</p>
                   </div>
                 </div>
                 
