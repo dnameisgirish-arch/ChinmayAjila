@@ -85,46 +85,6 @@ const BlogPage: React.FC = () => {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid lg:grid-cols-4 gap-12">
-          {/* Sidebar */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-24 space-y-8">
-              {/* Specialties */}
-              <div className="bg-white border border-gray-100 rounded-2xl p-6">
-                <h3 className="text-xl font-bold text-slate-800 mb-6 border-b pb-3">
-                  By <span className="text-teal-600">Specialities</span>
-                </h3>
-                <div className="space-y-3">
-                  {specialties.map((specialty, index) => (
-                    <button
-                      key={index}
-                      className="block w-full text-left text-slate-600 hover:text-teal-600 hover:bg-teal-50 px-3 py-2 rounded-lg transition-all text-sm"
-                    >
-                      {specialty}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Newsletter Signup */}
-              <div className="bg-gradient-to-br from-teal-600 to-teal-700 rounded-2xl p-6 text-white">
-                <h3 className="text-xl font-bold mb-3">Stay Updated</h3>
-                <p className="text-teal-100 mb-4 text-sm">
-                  Get the latest dental health tips and updates delivered to your inbox.
-                </p>
-                <div className="space-y-3">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="w-full px-4 py-3 rounded-lg text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-white"
-                  />
-                  <button className="w-full bg-white text-teal-600 px-4 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
-                    Subscribe
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
           {/* Blog Posts */}
           <div className="lg:col-span-3">
             <div className="grid gap-8">
@@ -196,6 +156,46 @@ const BlogPage: React.FC = () => {
               <button className="bg-slate-100 hover:bg-teal-600 text-slate-700 hover:text-white px-8 py-4 rounded-full text-lg font-semibold transition-all border-2 border-transparent hover:border-teal-600">
                 Load More Articles
               </button>
+            </div>
+          </div>
+
+          {/* Sidebar */}
+          <div className="lg:col-span-1">
+            <div className="sticky top-24 space-y-8">
+              {/* Specialties */}
+              <div className="bg-white border border-gray-100 rounded-2xl p-6">
+                <h3 className="text-xl font-bold text-slate-800 mb-6 border-b pb-3">
+                  By <span className="text-teal-600">Specialities</span>
+                </h3>
+                <div className="space-y-3">
+                  {specialties.map((specialty, index) => (
+                    <button
+                      key={index}
+                      className="block w-full text-left text-slate-600 hover:text-teal-600 hover:bg-teal-50 px-3 py-2 rounded-lg transition-all text-sm"
+                    >
+                      {specialty}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Newsletter Signup */}
+              <div className="bg-gradient-to-br from-teal-600 to-teal-700 rounded-2xl p-6 text-white">
+                <h3 className="text-xl font-bold mb-3">Stay Updated</h3>
+                <p className="text-teal-100 mb-4 text-sm">
+                  Get the latest dental health tips and updates delivered to your inbox.
+                </p>
+                <div className="space-y-3">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="w-full px-4 py-3 rounded-lg text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-white"
+                  />
+                  <button className="w-full bg-white text-teal-600 px-4 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+                    Subscribe
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
