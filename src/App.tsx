@@ -289,7 +289,7 @@ function App() {
               return (
                 <div 
                   key={index}
-                  className="group bg-white border border-gray-100 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                  className="group bg-white border border-gray-100 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 relative overflow-hidden"
                 >
                   <div className="bg-teal-100 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:bg-teal-600 transition-colors">
                     <IconComponent className="w-8 h-8 text-teal-600 group-hover:text-white transition-colors" />
@@ -302,6 +302,13 @@ function App() {
                   <p className="text-slate-600 leading-relaxed">
                     {service.description}
                   </p>
+                  
+                  {/* Know More button - appears on hover */}
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white via-white to-transparent p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <button className="w-full bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                      Know More
+                    </button>
+                  </div>
                 </div>
               );
             })}
@@ -530,7 +537,7 @@ function App() {
             return (
               <div 
                 key={index}
-                className="group bg-gradient-to-br from-teal-50 to-blue-50 border border-gray-100 rounded-xl p-6 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+                className="group bg-gradient-to-br from-teal-50 to-blue-50 border border-gray-100 rounded-xl p-6 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden"
               >
                 <div className="bg-teal-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:bg-teal-700 transition-colors">
                   <IconComponent className="w-6 h-6 text-white" />
@@ -543,6 +550,13 @@ function App() {
                 <p className="text-slate-600 leading-relaxed text-sm">
                   {service.description}
                 </p>
+                
+                {/* Know More button - appears on hover */}
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-teal-50 via-teal-50 to-transparent p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <button className="w-full bg-teal-600 hover:bg-teal-700 text-white px-3 py-2 rounded-lg text-xs font-medium transition-colors">
+                    Know More
+                  </button>
+                </div>
               </div>
             );
           })}
