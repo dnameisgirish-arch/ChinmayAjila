@@ -24,6 +24,17 @@ function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false); // State for Dr. Ajila's profile modal
   const [isServicesModalOpen, setIsServicesModalOpen] = useState(false); // State for services modal
   const location = useLocation();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const heroImages = [
+    "https://images.pexels.com/photos/7771733/pexels-photo-7771733.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/6528893/pexels-photo-6528893.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/6693243/pexels-photo-6693243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/8942041/pexels-photo-8942041.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/7615459/pexels-photo-7615459.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  ];
+
+  const kenburnsClasses = ['animate-kenburns-1', 'animate-kenburns-2', 'animate-kenburns-3', 'animate-kenburns-4', 'animate-kenburns-5'];
 
   const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeqq_brok8DVSqBzZf7DYtK2L6Q_wNwjH4BlDQy69KOUPdirQ/viewform?usp=dialog";
   const whatsappNumber = "+919900876136"; // Dr. Ajila's WhatsApp number
@@ -36,6 +47,14 @@ function HomePage() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 5000); // Change image every 5 seconds
+
+    return () => clearInterval(timer); // Cleanup on unmount
+  }, [heroImages.length]);
 
   const handleBookAppointmentClick = () => {
     window.open(googleFormUrl, '_blank');
@@ -262,12 +281,19 @@ function HomePage() {
 
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-teal-400/20 to-blue-400/20 rounded-3xl transform rotate-6"></div>
-              <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden">
-                <img 
-                  src="https://images.pexels.com/photos/6812511/pexels-photo-6812511.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                  alt="Modern dental clinic with advanced equipment"
-                  className="w-full h-96 lg:h-[500px] object-cover"
-                />
+              <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden h-96 lg:h-[500px]">
+                {heroImages.map((src, index) => (
+                  <img
+                    key={src}
+                    src={src}
+                    alt="Modern dental clinic with advanced equipment"
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+                      index === currentImageIndex 
+                        ? `opacity-100 ${kenburnsClasses[index]}` 
+                        : 'opacity-0'
+                    }`}
+                  />
+                ))}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent"></div>
               </div>
             </div>

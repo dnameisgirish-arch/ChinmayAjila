@@ -30,3 +30,69 @@
 .animate-fade-in-up {
   animation: fadeInUp 0.4s ease-out forwards;
 }
+
+/* New Ken Burns animations for slideshow */
+@keyframes kenburns-1 {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.1) translate(-5%, 5%);
+  }
+}
+
+@keyframes kenburns-2 {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.1) translate(5%, -5%);
+  }
+}
+
+@keyframes kenburns-3 {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.1) translate(0, 0);
+  }
+}
+
+@keyframes kenburns-4 {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.1) translate(-5%, -5%);
+  }
+}
+
+@keyframes kenburns-5 {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.1) translate(5%, 5%);
+  }
+}
+
+.animate-kenburns-1 {
+  animation: kenburns-1 6s ease-out forwards;
+}
+
+.animate-kenburns-2 {
+  animation: kenburns-2 6s ease-out forwards;
+}
+
+.animate-kenburns-3 {
+  animation: kenburns-3 6s ease-out forwards;
+}
+
+.animate-kenburns-4 {
+  animation: kenburns-4 6s ease-out forwards;
+}
+
+.animate-kenburns-5 {
+  animation: kenburns-5 6s ease-out forwards;
+}
