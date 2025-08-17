@@ -71,6 +71,7 @@ function App() {
       description: "Regular dental check-ups, oral hygiene guidance, and preventive treatments to protect your teeth and gums for life."
     },
     {
+      icon: CheckCircle,
       title: "Professional Teeth Cleaning",
       description: "Gentle scaling and polishing to remove tartar, stains, and plaque, leaving your smile fresh and healthy."
     },
