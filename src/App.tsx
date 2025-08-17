@@ -52,33 +52,67 @@ function App() {
   const services = [
     {
       icon: Shield,
-      title: "Preventive Care",
-      description: "Regular check-ups and cleanings to maintain optimal oral health and prevent dental issues."
+      title: "Diagnosis & Treatment Planning",
+      description: "Expert dental evaluation and customized treatment plans to ensure long-lasting oral health and a confident smile."
     },
     {
-      icon: Star,
-      title: "Cosmetic Dentistry",
-      description: "Enhance your smile with veneers, whitening, and cosmetic treatments for confidence."
+      icon: Shield,
+      title: "Dental X-rays",
+      description: "Advanced digital dental X-rays for accurate diagnosis, early detection, and safe, precise treatment planning."
     },
     {
       icon: Heart,
-      title: "Restorative Dentistry",
-      description: "Crowns, bridges, and implants to restore your teeth's function and appearance."
+      title: "Emergency Dental Care",
+      description: "Immediate care for severe tooth pain, broken teeth, or sudden oral injuries—available when you need it most."
     },
     {
       icon: CheckCircle,
-      title: "Orthodontics",
-      description: "Straighten teeth with braces and clear aligners for a perfect, healthy smile."
+      title: "Preventive Dental Care",
+      description: "Regular dental check-ups, oral hygiene guidance, and preventive treatments to protect your teeth and gums for life."
+    },
+    {
+      title: "Professional Teeth Cleaning",
+      description: "Gentle scaling and polishing to remove tartar, stains, and plaque, leaving your smile fresh and healthy."
     },
     {
       icon: Award,
-      title: "Oral Surgery",
-      description: "Expert surgical procedures including extractions and advanced periodontal treatments."
+      title: "Advanced Gum Surgeries",
+      description: "Specialized periodontal treatments to treat gum disease, restore gum health, and protect your natural teeth."
+    },
+    {
+      icon: Heart,
+      title: "Root Canal Treatment (RCT)",
+      description: "Pain-free root canal therapy to save infected teeth, restore function, and prevent further damage."
+    },
+    {
+      icon: Shield,
+      title: "Gentle Tooth Extraction",
+      description: "Safe, comfortable, and painless tooth removal using modern anesthesia for quick recovery and minimal discomfort."
+    },
+    {
+      icon: Award,
+      title: "Crowns & Bridges",
+      description: "High-quality, natural-looking dental crowns and bridges to restore damaged or missing teeth beautifully."
+    },
+    {
+      icon: Star,
+      title: "Dental Implants",
+      description: "Permanent tooth replacement with natural look and function, improving chewing, speech, and confidence."
     },
     {
       icon: Users,
-      title: "Emergency Care",
-      description: "Immediate dental care when you need it most, available for urgent situations."
+      title: "Custom Dentures",
+      description: "Comfortable, well-fitted dentures designed to restore your smile and make eating and speaking effortless."
+    },
+    {
+      icon: CheckCircle,
+      title: "Orthodontic Treatment (Braces & Aligners)",
+      description: "Braces and clear aligners to straighten teeth, improve bite, and create a perfect smile."
+    },
+    {
+      icon: Star,
+      title: "Cosmetic Dentistry & Smile Makeover",
+      description: "Teeth whitening, veneers, and smile design for a radiant, confident, and picture-perfect smile."
     }
   ];
 
@@ -249,7 +283,7 @@ function App() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => {
+            {services.slice(0, 6).map((service, index) => {
               const IconComponent = service.icon;
               return (
                 <div 
@@ -489,23 +523,23 @@ function App() {
         onClose={() => setIsServicesModalOpen(false)}
         title="Our Full Range of Services"
       >
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-6">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
               <div 
                 key={index}
-                className="group bg-white border border-gray-100 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                className="group bg-gradient-to-br from-teal-50 to-blue-50 border border-gray-100 rounded-xl p-6 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
               >
-                <div className="bg-teal-100 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:bg-teal-600 transition-colors">
-                  <IconComponent className="w-8 h-8 text-teal-600 group-hover:text-white transition-colors" />
+                <div className="bg-teal-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:bg-teal-700 transition-colors">
+                  <IconComponent className="w-6 h-6 text-white" />
                 </div>
                 
-                <h3 className="text-xl font-bold text-slate-800 mb-4">
+                <h3 className="text-lg font-bold text-slate-800 mb-3">
                   {service.title}
                 </h3>
                 
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-slate-600 leading-relaxed text-sm">
                   {service.description}
                 </p>
               </div>
