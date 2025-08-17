@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { 
   Menu, 
   X, 
@@ -15,12 +16,14 @@ import {
   MessageCircle // Import MessageCircle for the chat button
 } from 'lucide-react';
 import Modal from './components/Modal'; // Import the new Modal component
+import BlogPage from './components/BlogPage';
 
-function App() {
+function HomePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false); // State for Dr. Ajila's profile modal
   const [isServicesModalOpen, setIsServicesModalOpen] = useState(false); // State for services modal
+  const location = useLocation();
 
   const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeqq_brok8DVSqBzZf7DYtK2L6Q_wNwjH4BlDQy69KOUPdirQ/viewform?usp=dialog";
   const whatsappNumber = "+919900876136"; // Dr. Ajila's WhatsApp number
@@ -147,9 +150,9 @@ function App() {
             {/* Desktop Navigation */}
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
-                <a href="#home" className="text-slate-700 hover:text-teal-600 px-3 py-2 text-sm font-medium transition-colors">
+                <Link to="/" className={`px-3 py-2 text-sm font-medium transition-colors ${location.pathname === '/' ? 'text-teal-600' : 'text-slate-700 hover:text-teal-600'}`}>
                   Home
-                </a>
+                </Link>
                 <a href="#services" className="text-slate-700 hover:text-teal-600 px-3 py-2 text-sm font-medium transition-colors">
                   Services
                 </a>
@@ -159,9 +162,9 @@ function App() {
                 <a href="#contact" className="text-slate-700 hover:text-teal-600 px-3 py-2 text-sm font-medium transition-colors">
                   Contact
                 </a>
-                <a href="#" className="text-slate-700 hover:text-teal-600 px-3 py-2 text-sm font-medium transition-colors">
+                <Link to="/blogs" className={`px-3 py-2 text-sm font-medium transition-colors ${location.pathname === '/blogs' ? 'text-teal-600' : 'text-slate-700 hover:text-teal-600'}`}>
                   Blogs
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -180,9 +183,9 @@ function App() {
           {isMenuOpen && (
             <div className="md:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 shadow-lg">
               <div className="px-4 py-6 space-y-4">
-                <a href="#home" className="block text-slate-700 hover:text-teal-600 py-2 text-base font-medium">
+                <Link to="/" className="block text-slate-700 hover:text-teal-600 py-2 text-base font-medium" onClick={() => setIsMenuOpen(false)}>
                   Home
-                </a>
+                </Link>
                 <a href="#services" className="block text-slate-700 hover:text-teal-600 py-2 text-base font-medium">
                   Services
                 </a>
@@ -192,6 +195,9 @@ function App() {
                 <a href="#contact" className="block text-slate-700 hover:text-teal-600 py-2 text-base font-medium">
                   Contact
                 </a>
+                <Link to="/blogs" className="block text-slate-700 hover:text-teal-600 py-2 text-base font-medium" onClick={() => setIsMenuOpen(false)}>
+                  Blogs
+                </Link>
                 <button 
                   onClick={handleBookAppointmentClick}
                   className="w-full bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-full text-base font-medium transition-colors shadow-lg"
@@ -579,6 +585,131 @@ function App() {
         <MessageCircle className="w-6 h-6" />
         <span>Chat with Us!</span>
       </button>
+    </div>
+  );
+}
+
+// Navigation Component
+function Navigation() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeqq_brok8DVSqBzZf7DYtK2L6Q_wNwjH4BlDQy69KOUPdirQ/viewform?usp=dialog";
+
+  const handleBookAppointmentClick = () => {
+    window.open(googleFormUrl, '_blank');
+  };
+
+  return (
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-white shadow-lg border-b border-gray-100' 
+        : 'bg-white/95 backdrop-blur-sm'
+    }`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16 lg:h-20">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <Link to="/">
+              <h1 className="text-xl lg:text-2xl font-bold">
+                <span className="text-teal-600">DR. AJILA'S</span>
+                <span className="text-slate-800 ml-2 block lg:inline text-sm lg:text-xl">
+                  SPECIALITY DENTAL CARE
+                </span>
+              </h1>
+            </Link>
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-8">
+              <Link to="/" className={`px-3 py-2 text-sm font-medium transition-colors ${location.pathname === '/' ? 'text-teal-600' : 'text-slate-700 hover:text-teal-600'}`}>
+                Home
+              </Link>
+              {location.pathname === '/' && (
+                <>
+                  <a href="#services" className="text-slate-700 hover:text-teal-600 px-3 py-2 text-sm font-medium transition-colors">
+                    Services
+                  </a>
+                  <a href="#about" className="text-slate-700 hover:text-teal-600 px-3 py-2 text-sm font-medium transition-colors">
+                    About Us
+                  </a>
+                  <a href="#contact" className="text-slate-700 hover:text-teal-600 px-3 py-2 text-sm font-medium transition-colors">
+                    Contact
+                  </a>
+                </>
+              )}
+              <Link to="/blogs" className={`px-3 py-2 text-sm font-medium transition-colors ${location.pathname === '/blogs' ? 'text-teal-600' : 'text-slate-700 hover:text-teal-600'}`}>
+                Blogs
+              </Link>
+            </div>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-slate-700 hover:text-teal-600 p-2"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 shadow-lg">
+            <div className="px-4 py-6 space-y-4">
+              <Link to="/" className="block text-slate-700 hover:text-teal-600 py-2 text-base font-medium" onClick={() => setIsMenuOpen(false)}>
+                Home
+              </Link>
+              {location.pathname === '/' && (
+                <>
+                  <a href="#services" className="block text-slate-700 hover:text-teal-600 py-2 text-base font-medium">
+                    Services
+                  </a>
+                  <a href="#about" className="block text-slate-700 hover:text-teal-600 py-2 text-base font-medium">
+                    About Us
+                  </a>
+                  <a href="#contact" className="block text-slate-700 hover:text-teal-600 py-2 text-base font-medium">
+                    Contact
+                  </a>
+                </>
+              )}
+              <Link to="/blogs" className="block text-slate-700 hover:text-teal-600 py-2 text-base font-medium" onClick={() => setIsMenuOpen(false)}>
+                Blogs
+              </Link>
+              <button 
+                onClick={handleBookAppointmentClick}
+                className="w-full bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-full text-base font-medium transition-colors shadow-lg"
+              >
+                Book Appointment
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </nav>
+  );
+}
+
+function App() {
+  return (
+    <div>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/blogs" element={<BlogPage />} />
+      </Routes>
     </div>
   );
 }
