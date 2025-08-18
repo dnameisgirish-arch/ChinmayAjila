@@ -474,9 +474,14 @@ function HomePage() {
             </div>
 
             <div className="bg-gradient-to-br from-teal-50 to-blue-50 rounded-2xl p-8 text-center">
-              <div className="bg-teal-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+              <a 
+                href={googleMapsUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-teal-600 hover:bg-teal-700 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors cursor-pointer transform hover:scale-105"
+              >
                 <MapPin className="w-8 h-8 text-white" />
-              </div>
+              </a>
               <h3 className="text-xl font-bold text-slate-800 mb-4">Visit Us</h3>
               <p className="text-lg font-semibold text-slate-800 mb-2">
                 1st floor, Prime Mall,<br />
