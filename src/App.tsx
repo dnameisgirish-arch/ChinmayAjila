@@ -16,6 +16,7 @@ import {
   MessageCircle // Import MessageCircle for the chat button
 } from 'lucide-react';
 import Modal from './components/Modal'; // Import the new Modal component
+import ServiceModal from './components/ServiceModal'; // Import the new ServiceModal component
 import BlogPage from './components/BlogPage';
 
 function HomePage() {
@@ -23,6 +24,12 @@ function HomePage() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false); // State for Dr. Ajila's profile modal
   const [isServicesModalOpen, setIsServicesModalOpen] = useState(false); // State for services modal
+  const [isServiceDetailModalOpen, setIsServiceDetailModalOpen] = useState(false); // State for individual service modal
+  const [selectedService, setSelectedService] = useState<{
+    icon: React.ComponentType<any>;
+    title: string;
+    description: string;
+  } | null>(null); // State for selected service
   const location = useLocation();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -340,7 +347,13 @@ function HomePage() {
                   
                   {/* Know More button - appears on hover */}
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white via-white to-transparent p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <button className="w-full bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                    <button 
+                      onClick={() => {
+                        setSelectedService(service);
+                        setIsServiceDetailModalOpen(true);
+                      }}
+                      className="w-full bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                    >
                       Know More
                     </button>
                   </div>
@@ -588,7 +601,13 @@ function HomePage() {
                 
                 {/* Know More button - appears on hover */}
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-teal-50 via-teal-50 to-transparent p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <button className="w-full bg-teal-600 hover:bg-teal-700 text-white px-3 py-2 rounded-lg text-xs font-medium transition-colors">
+                  <button 
+                    onClick={() => {
+                      setSelectedService(service);
+                      setIsServiceDetailModalOpen(true);
+                    }}
+                    className="w-full bg-teal-600 hover:bg-teal-700 text-white px-3 py-2 rounded-lg text-xs font-medium transition-colors"
+                  >
                     Know More
                   </button>
                 </div>
@@ -605,6 +624,17 @@ function HomePage() {
           </button>
         </div>
       </Modal>
+
+      {/* Individual Service Detail Modal */}
+      <ServiceModal
+        isOpen={isServiceDetailModalOpen}
+        onClose={() => {
+          setIsServiceDetailModalOpen(false);
+          setSelectedService(null);
+        }}
+        service={selectedService}
+        onBookAppointment={handleBookAppointmentClick}
+      />
 
       {/* Floating Chat Button */}
       <button
